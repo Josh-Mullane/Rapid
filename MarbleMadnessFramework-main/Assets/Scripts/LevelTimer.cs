@@ -7,12 +7,14 @@ public class MyIntEvent : UnityEvent<int>
 {
 }
 
+
 public class LevelTimer : MonoBehaviour, ITimer
 {
+
     public static LevelTimer Instance { get; private set; }
 
     public int maxTime;
-    protected int remainingTime;
+    public int remainingTime;
 
     public UnityEvent started = new UnityEvent();
     public UnityEvent stopped = new UnityEvent();
