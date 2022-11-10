@@ -11,6 +11,7 @@ public enum UIState
 
 public class UIManager : MonoBehaviour
 {
+    
     public static UIManager Instance { get; private set; }
 
     UIState uiState;
@@ -18,6 +19,12 @@ public class UIManager : MonoBehaviour
 
     Text time;
     Text scoreP1, scoreP2;
+    public int score2;
+
+
+
+
+
 
     // Start is called before the first frame update
     void Awake()
@@ -30,6 +37,8 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
 
         Transform canvas = GameObject.Find("Canvas").transform;
 
@@ -112,5 +121,6 @@ public class UIManager : MonoBehaviour
     public void OnLevelTimerTicked(int remainingTime)
     {
         time.text = remainingTime.ToString();
+        scoreP2.text = score2.ToString();
     }
 }
