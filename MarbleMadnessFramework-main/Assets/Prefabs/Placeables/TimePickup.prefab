@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3700431446940613963}
   - component: {fileID: -3683138451988656232}
+  - component: {fileID: -7460125470646750632}
   m_Layer: 0
   m_Name: TimePickup
   m_TagString: Untagged
@@ -142,3 +143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cd012f379779141a36978a5ae74e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &-7460125470646750632
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3700431446940613972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

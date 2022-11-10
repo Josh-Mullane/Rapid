@@ -15,15 +15,38 @@ public class TimePickup : MonoBehaviour
     {
 
     }
-   
 
-    public void OnTriggerEnter(Collider other)
+
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "Player")
+    //    {
+    //        LevelTimer.Instance.remainingTime += 10;
+    //        Destroy(this.gameObject);
+    //    }
+    //}
+
+
+
+    //    private void OnCollisionEnter(Collision collision)
+    //    {
+    //        if(collision.gameObject.tag == "Player")
+    //        {
+    //            Destroy(collision.this.gameobject);
+    //       }
+    //    }
+
+
+    void OnCollisionEnter(Collision col)
     {
-        if (other.tag == "Player Ball")
+        if (col.gameObject.tag == "Player")
         {
             LevelTimer.Instance.remainingTime += 10;
             Destroy(this.gameObject);
         }
-
     }
 }
+
+
+
+
