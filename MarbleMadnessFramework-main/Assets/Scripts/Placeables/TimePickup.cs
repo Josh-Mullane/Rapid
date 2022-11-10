@@ -27,14 +27,14 @@ public class TimePickup : MonoBehaviour
     //}
 
 
-
-    //    private void OnCollisionEnter(Collision collision)
+    ///why these don't work I've no idea
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.tag == "Player")
     //    {
-    //        if(collision.gameObject.tag == "Player")
-    //        {
-    //            Destroy(collision.this.gameobject);
-    //       }
-    //    }
+    //        Destroy(collision.this.gameobject);
+    //   }
+    //}
 
 
     void OnCollisionEnter(Collision col)
