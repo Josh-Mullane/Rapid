@@ -27,6 +27,8 @@ public class BetterCharacterController : MonoBehaviour
 
     public LayerMask groundedLayers;
 
+    public Animator anim;
+
     protected Collider2D charCollision;
     protected Vector2 playerSize, boxSize;
 
@@ -83,7 +85,13 @@ public class BetterCharacterController : MonoBehaviour
         }
 
         //Get Player input 
-        horizInput = Input.GetAxis("Horizontal");     
+        horizInput = Input.GetAxis("Horizontal");    
+        
+        if(rb.velocity.x > 0f || rb.velocity.x < 0f)
+        {
+            Debug.Log("Running");
+            anim.SetBool("Running", true);
+        }
     }
 
     // Flip Character Sprite

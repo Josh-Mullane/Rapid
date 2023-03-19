@@ -13,9 +13,11 @@ public class BasicCharacterController : MonoBehaviour
 {
     protected bool facingRight = true;
     protected bool jumped;
+    protected bool dashed;
 
     public float speed = 5.0f;
     public float jumpForce = 1000;
+    public float dashForce = 1000;
 
     private float horizInput;
 
@@ -24,10 +26,26 @@ public class BasicCharacterController : MonoBehaviour
     public bool grounded;
 
     public Rigidbody2D rb;
+    public Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+         if (Input.GetButtonDown("Jump") && grounded == true)
+        {
+            jumped = true;
+            Debug.Log("Should jump");
+        }
+
+        if (Input.GetButtonDown("Jump") && grounded == false)
+        {
+            dashed = true;
+            Debug.Log("Should dash");
+        }
     }
 
     void FixedUpdate()
@@ -41,11 +59,7 @@ public class BasicCharacterController : MonoBehaviour
         //Move Character
         rb.velocity = new Vector2(horizInput * speed * Time.fixedDeltaTime, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && grounded == true)
-        {
-            jumped = true;
-            Debug.Log("Should jump");
-        }
+       
 
         if (jumped == true)
         {
@@ -53,6 +67,14 @@ public class BasicCharacterController : MonoBehaviour
             Debug.Log("Jumping!");
 
             jumped = false;
+        }
+
+        if (dashed == true)
+        {
+            rb.AddForce(new Vector2(dashForce, 0f));
+            Debug.Log("Dashing!");
+
+            dashed = false;
         }
 
         // Detect if character sprite needs flipping
@@ -63,6 +85,12 @@ public class BasicCharacterController : MonoBehaviour
         else if (horizInput < 0 && facingRight)
         {
             FlipSprite();
+        }
+
+        if(rb.velocity.x != 0f)
+        {
+            //Debug.Log("Running");
+            anim.SetBool("Running", true);
         }
     }
 
