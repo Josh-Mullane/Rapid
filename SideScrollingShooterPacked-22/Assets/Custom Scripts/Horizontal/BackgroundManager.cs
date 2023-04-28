@@ -39,7 +39,7 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CreateSpawner();
+        
         if (Camera.main.transform.position.x > children[1].transform.position.x)
         {
             MoveListOrder();
