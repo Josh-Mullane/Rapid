@@ -18,6 +18,7 @@ public class BackgroundManager : MonoBehaviour
         spawner.countToSpawn = Random.Range(1, 10);
         spawner.spawnRate = Random.Range(0.3f, 1.5f);
         spawner.enemyToSpawn = enemyToSpawn;
+        //spawner.
     }
 
     void MoveListOrder()
@@ -43,7 +44,9 @@ public class BackgroundManager : MonoBehaviour
         if (Camera.main.transform.position.x > children[1].transform.position.x)
         {
             MoveListOrder();
-            
+            CreateSpawner();
+
+
         }
     }
 }

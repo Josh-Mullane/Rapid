@@ -29,10 +29,10 @@ public class EnemySpawner : MonoBehaviour
 
             time = 0;
             ++spawned;
-            if (spawned > countToSpawn)
-            {
-                Destroy(gameObject);
-            }
+            //if (spawned > countToSpawn)
+            //{
+            //    Destroy(gameObject);
+            //}
         }
     }
 }
