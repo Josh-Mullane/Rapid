@@ -9,12 +9,24 @@ public class BackgroundManager : MonoBehaviour
     public List<SpriteRenderer> children;
     private Vector3 distance;
 
-    void MoveListorder()
+    public EnemySpawner enemySpawner;
+    public GameObject enemyToSpawn;
+
+    void CreateSpawner()
+    {
+        EnemySpawner spawner = Instantiate(enemySpawner, children[children.Count - 1].transform.position, children[children.Count - 1].transform.rotation);
+        spawner.countToSpawn = Random.Range(1, 10);
+        spawner.spawnRate = Random.Range(0.3f, 1.5f);
+        spawner.enemyToSpawn = enemyToSpawn;
+    }
+
+    void MoveListOrder()
     {
         SpriteRenderer copy = children[0];
         children.RemoveAt(0);
         children.Insert(children.Count, copy);
         children[children.Count - 1].transform.position = children[0].transform.position + distance;
+        
 
     }
     // Start is called before the first frame update
@@ -27,9 +39,11 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Camera.main.transform.position.x > children[1].transform.position.x)
+        CreateSpawner();
+        if (Camera.main.transform.position.x > children[1].transform.position.x)
         {
             MoveListOrder();
+            
         }
     }
 }
