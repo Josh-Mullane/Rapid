@@ -10,7 +10,7 @@ public class BackgroundManager : MonoBehaviour
     private Vector3 distance;
 
     public EnemySpawner enemySpawner;
-    public GameObject enemyToSpawn;
+    public GameObject enemyToSpawn, enemyToSpawn2;
 
     void CreateSpawner()
     {
@@ -18,6 +18,7 @@ public class BackgroundManager : MonoBehaviour
         spawner.countToSpawn = Random.Range(1, 10);
         spawner.spawnRate = Random.Range(0.3f, 1.5f);
         spawner.enemyToSpawn = enemyToSpawn;
+        spawner.enemyToSpawn2 = enemyToSpawn2;
         //spawner.
     }
 
