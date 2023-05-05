@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         {
             GameObject enemy2 = Instantiate(enemyToSpawn2, transform.position, transform.rotation);
             enemy2.GetComponent<MushroomMover>().hSpeed = Random.Range(0.1f, 1.5f);
-            enemy2.GetComponent<MushroomMover>().maxYOffset = Random.Range(0.1f, 2.5f);
+            enemy2.GetComponent<MushroomMover>().maxYOffset = -7.0f;
 
             time2 = 0;
             ++spawned;
