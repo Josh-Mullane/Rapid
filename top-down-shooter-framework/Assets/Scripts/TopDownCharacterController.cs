@@ -17,6 +17,17 @@ public class TopDownCharacterController : MonoBehaviour
     //The speed at which they're moving
     private float playerSpeed = 1f;
 
+    private Vector3 mousePos;
+    private Camera MainCam;
+    private Transform bulletSpawn;
+
+    float RotZ;
+
+    public GameObject projectileOne;
+
+ 
+    private Rigidbody2D RB;
+    public float Force;
 
     [Header("Movement parameters")]
 
@@ -32,6 +43,12 @@ public class TopDownCharacterController : MonoBehaviour
         //Get the attached components so we can use them later
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        MainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        RB = GetComponent<Rigidbody2D>();
+        RB.velocity = transform.right * Force;
+
+        bulletSpawn = GameObject.FindGameObjectWithTag("bulletSpawn").GetComponent<Transform>();
     }
 
     /// <summary>
@@ -42,6 +59,16 @@ public class TopDownCharacterController : MonoBehaviour
         //Set the velocity to the direction they're moving in, multiplied
         //by the speed they're moving
         rb.velocity = playerDirection * (playerSpeed * playerMaxSpeed) * Time.fixedDeltaTime;
+
+        //mousePos = MainCam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = MainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            
+        Vector3 Rotation = mousePos - transform.position;
+
+        RotZ = Mathf.Atan2(Rotation.y, Rotation.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, RotZ);
+
     }
 
     public void OnPlayerInputShoot(InputAction.CallbackContext context)
@@ -49,7 +76,7 @@ public class TopDownCharacterController : MonoBehaviour
         //Not performed? Don't run any other code
         if (!context.performed)
             return;
-
+        Instantiate(projectileOne, bulletSpawn.position, Quaternion.Euler(0, 0, RotZ));
         //Otherwise:
         Debug.Log($"Shoot! {Time.time}", gameObject);
     }
