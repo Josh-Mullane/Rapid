@@ -5,34 +5,43 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public GameObject enemyToSpawn;
-    public float spawnRate;
+    public GameObject enemyToSpawn, enemyToSpawn2;
+    public float spawnRate, spawnRate2;
     public int countToSpawn;
 
-    private float time = 0;
+    private float time, time2 = 0;
     private int spawned = 0;
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         time += Time.deltaTime;
-        if(time>spawnRate)
+        time2 += Time.deltaTime;
+        if(time>spawnRate && spawned < countToSpawn)
         {
             GameObject enemy = Instantiate(enemyToSpawn, transform.position, transform.rotation);
             enemy.GetComponent<ButterflyMover>().hSpeed = Random.Range(0.1f, 1.5f);
             enemy.GetComponent<ButterflyMover>().maxYOffset = Random.Range(0.1f, 2.5f);
 
+           
+
             time = 0;
             ++spawned;
-            //if (spawned > countToSpawn)
-            //{
-            //    Destroy(gameObject);
-            //}
+            
+        }
+        if(time2>spawnRate2 && spawned < countToSpawn)
+        {
+            GameObject enemy2 = Instantiate(enemyToSpawn2, transform.position, transform.rotation);
+            enemy2.GetComponent<MushroomMover>().hSpeed = Random.Range(0.1f, 1.5f);
+            enemy2.GetComponent<MushroomMover>().maxYOffset = -7.0f;
+
+            time2 = 0;
+            ++spawned;
         }
     }
 }
