@@ -29,4 +29,13 @@ public class bullet2 : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D death)
+    {
+        if(death.gameObject.tag == "enemy")
+        {
+            Destroy(death.gameObject);
+            destroyBullet();
+        }
+    }
 }
