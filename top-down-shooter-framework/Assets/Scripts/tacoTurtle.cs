@@ -33,9 +33,9 @@ public class tacoTurtle : MonoBehaviour
         rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
     }
 
-    void OnTriggerEnter(Collider crash)
+    void OnTriggerEnter2D(Collider2D crash)
     {
-        if(crash.gameObject.tag == "player")
+        if(crash.gameObject.tag == "Player")
         {
             Application.Quit();
         }

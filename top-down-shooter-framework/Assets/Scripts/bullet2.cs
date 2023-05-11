@@ -36,6 +36,7 @@ public class bullet2 : MonoBehaviour
         {
             Destroy(death.gameObject);
             destroyBullet();
+            
         }
     }
 }
