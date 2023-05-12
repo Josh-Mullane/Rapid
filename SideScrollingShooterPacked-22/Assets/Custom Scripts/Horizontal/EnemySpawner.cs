@@ -43,5 +43,9 @@ public class EnemySpawner : MonoBehaviour
             time2 = 0;
             ++spawned;
         }
+        else
+        {
+            spawned = 0;
+        }
     }
 }
